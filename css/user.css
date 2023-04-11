@@ -1,0 +1,775 @@
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    /* 1 */
+}
+
+/*
+ * Extends the .sr-only class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *::before,
+    *::after {
+        background: #fff !important;
+        color: #000 !important;
+        /* Black prints faster */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "";
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+.user_searchbar {
+    position: fixed;
+    width: 1920px;
+    height: 116px;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+}
+
+.user_baloot_image {
+    position: absolute;
+    width: 102px;
+    height: 94px;
+    left: 56px;
+    top: 10px;
+
+    /*background: url(baloot.png);*/
+    border-radius: 47px;
+}
+
+.user_baloot_text {
+    position: absolute;
+    width: 183px;
+    height: 72px;
+    left: 138px;
+    top: 33px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 51px;
+    text-align: center;
+
+    color: #A97B47;
+}
+
+.user_name {
+    position: absolute;
+    width: 153px;
+    height: 34px;
+    left: 1514px;
+    top: 38px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #593C1C;
+}
+
+.cart_box {
+    position: absolute;
+    width: 160px;
+    height: 68px;
+    left: 1705px;
+    top: 25px;
+
+    background: #593C1C;;
+    border-radius: 15px;
+}
+
+.user_footer {
+    position: absolute;
+    width: 1920px;
+    height: 60px;
+    left: 0px;
+    top: 2392px;
+    background: #593C1C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+}
+
+.cart {
+    position: absolute;
+    width: 60px;
+    height: 34px;
+    left: 1718px;
+    top: 42px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #F7F0E9;
+}
+
+.cart_quality {
+    position: absolute;
+    width: 19px;
+    height: 34px;
+    left: 1829px;
+    top: 42px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.person_font {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #593C1C;
+}
+
+.person_box {
+    position: absolute;
+    width: 1597px;
+    height: 349px;
+    left: 138px;
+    top: 205px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+}
+
+.picture1 {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 173px;
+    top: 247px;
+    border-radius: 0px;
+}
+
+.picture2 {
+    position: absolute;
+    height: 16px;
+    width: 20px;
+    left: 173px;
+    top: 298px;
+    border-radius: 0px;
+}
+
+.picture3 {
+    position: absolute;
+    height: 20px;
+    width: 18px;
+    left: 174px;
+    top: 345px;
+    border-radius: 0px;
+}
+
+.picture4 {
+    position: absolute;
+    height: 20px;
+    width: 14px;
+    left: 176px;
+    top: 394px;
+    border-radius: 0px;
+}
+
+.picture5 {
+    position: absolute;
+    height: 96px;
+    width: 54px;
+    left: 973px;
+    top: 249px;
+    border-radius: 0px;
+
+}
+
+
+.name {
+    position: absolute;
+    width: 109px;
+    height: 34px;
+    left: 215px;
+    top: 240px;
+}
+
+.mail {
+    position: absolute;
+    width: 397px;
+    height: 34px;
+    left: 215px;
+    top: 289px;
+}
+
+.date {
+    position: absolute;
+    width: 149px;
+    height: 34px;
+    left: 215px;
+    top: 338px;
+}
+
+.location {
+    position: absolute;
+    width: 575px;
+    height: 34px;
+    left: 215px;
+    top: 386px;
+}
+
+.credit {
+    position: absolute;
+    width: 660px;
+    height: 155px;
+    left: 1040px;
+    top: 219px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 128px;
+    line-height: 155px;
+    color: #593C1C;
+}
+
+.credit_box {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 727px;
+    height: 57px;
+    left: 973px;
+    top: 386px;
+
+    background: #FFFFFF;
+    border: 1px solid #919191;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+}
+
+.amount {
+    position: absolute;
+    width: 108px;
+    height: 29px;
+    left: 1283px;
+    top: 400px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #919191;
+}
+
+.add_box {
+    position: absolute;
+    width: 727px;
+    height: 57px;
+    left: 973px;
+    top: 456px;
+
+    background: #593C1C;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px
+}
+
+.add_text {
+    position: absolute;
+    width: 191px;
+    height: 29px;
+    left: 1241px;
+    top: 470px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+}
+
+.cart_pic {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    left: 138px;
+    top: 651px;
+    border-radius: 0px;
+
+}
+
+.cart_text {
+    position: absolute;
+    width: 85px;
+    height: 48px;
+    left: 179px;
+    top: 643px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+
+    color: #593C1C;
+}
+
+.history_pic {
+    position: absolute;
+    height: 30px;
+    width: 35px;
+    left: 159px;
+    top: 1255px;
+    border-radius: 0px;
+}
+
+.history_text {
+    position: absolute;
+    width: 142px;
+    height: 48px;
+    left: 204px;
+    top: 1246px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+
+    color: #593C1C;
+}
+
+.pos1 {
+    left: 573px;
+    top: 1044px;
+}
+
+.pos2 {
+    left: 886px;
+    top: 1058px;
+}
+
+.table1 {
+    position: absolute;
+    width: 1597px;
+    height: 75px;
+    left: 138px;
+    top: 726px;
+    text-align: center;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    align-items: center;
+    align-content: center;
+}
+
+.tr1 {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    width: 1597px;
+    height: 75px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+}
+
+.tr2 {
+    width: 1597px;
+    height: 150px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #919191;
+}
+
+.image_size1 {
+    width: 126px;
+    height: 122px;
+}
+
+.rate1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    color: #FFC700;
+}
+
+.inStock1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    color: #C82525;
+}
+
+.relative {
+    position: relative;
+}
+
+.quality_add {
+    box-sizing: border-box;
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    background: #FFFFFF;
+    border: 1px solid #593C1C;
+    border-radius: 15px;
+    top: 20%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.padding1 {
+    padding-left: 40px;
+}
+
+.table2 {
+    position: absolute;
+    width: 1597px;
+    height: 75px;
+    left: 159px;
+    top: 1330px;
+    text-align: center;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    align-items: center;
+    align-content: center;
+}
+
+.tr3 {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    width: 1597px;
+    height: 75px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+}
+
+.tr4 {
+    width: 1597px;
+    height: 150px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #919191;
+}
+
+.tr5 {
+    width: 1597px;
+    height: 150px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(208, 208, 208, 0.25);
+    border-radius: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #919191;
+}
+
+
+
+
+
+
+
+
+

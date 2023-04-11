@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
+body{
+    background: #A97B47;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+h1{
+    font-size: 30vh;
+}
+h2 span{
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.text_center {
+    text-align: center
+}
