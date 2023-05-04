@@ -86,7 +86,7 @@ export default function Home(props) {
                 { !isLoggedIn ?
                     <>
                         <div className="register "></div>
-                        <div className="register_text"> register</div>
+                        <div className="register_text" onClick={() => navigate('/register')}> register</div>
                         <div className="login"></div>
                         <div className="login_text" onClick={() => navigate('/login')}> login</div>
                     </> :

@@ -90,6 +90,10 @@ body{
     cursor: pointer;
 }
 
+.last_submit {
+    background: #2d3e3f;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 
 }
