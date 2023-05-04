@@ -1,10 +1,10 @@
-body {
+.login-body {
     background: url('../images/jungle.png') no-repeat fixed center center;
     background-size: cover;
     font-family: Montserrat;
 }
 
-.logo {
+.login-logo {
     width: 213px;
     height: 36px;
     background: url('../images/baloot.png') no-repeat;
@@ -12,7 +12,7 @@ body {
     background-size: 100% 100%;
 }
 
-.login-block {
+.login-container {
     width: 320px;
     padding: 20px;
     background: #fff;
@@ -21,7 +21,7 @@ body {
     margin: 0 auto;
 }
 
-.login-block h1 {
+.login-container h1 {
     text-align: center;
     color: #000;
     font-size: 18px;
@@ -30,7 +30,7 @@ body {
     margin-bottom: 20px;
 }
 
-.login-block input {
+.login-container input {
     width: 100%;
     height: 42px;
     box-sizing: border-box;
@@ -43,23 +43,23 @@ body {
     outline: none;
 }
 
-.login-block input#username {
+.login-container input#username {
     background: #fff url('../images/user.png') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
 
-.login-block input#password {
+.login-container input#password {
     background: #fff url('../images/pass.png') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
 
-.login-block input:active, .login-block input:focus {
+.login-container input:active, .login-container input:focus {
     border: 1px solid #A97B47;
 }
 
-.login-block button {
+.login-container button {
     width: 100%;
     height: 40px;
     background: #A97B47;
@@ -75,6 +75,6 @@ body {
     cursor: pointer;
 }
 
-.login-block button:hover {
+.login-container button:hover {
     background: #A97B47;
 }

@@ -1,6 +1,6 @@
 /*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
 
-/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/* Home.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -266,7 +266,7 @@ textarea {
     width: 1920px;
     height: 60px;
     left: 0px;
-    top: 1361px;
+    top: 2027px;
     background: #593C1C;
     display: flex;
     align-items: center;
@@ -278,6 +278,14 @@ textarea {
     font-size: 24px;
     line-height: 29px;
     text-align: center;
+}
+
+.page {
+    position: absolute;
+    width: 401px;
+    height: 41px;
+    left: 771px;
+    top: 1896px;
 }
 
 .searchbar {
@@ -364,6 +372,22 @@ textarea {
 
     background: #F7F0E9;
     border-radius: 15px;
+}
+
+.default_input {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #212529;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+}
+input.default_input:focus {
+    outline: none;
 }
 
 .default_text {
@@ -588,13 +612,62 @@ textarea {
     color: #FFFFFF;
 }
 
+.name_box {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    left: 1352px;
+    top: 188px;
+
+    background: #A97B47;
+    border-radius: 15px;
+}
+
+.name_text {
+    position: absolute;
+    width: 75px;
+    height: 34px;
+    left: 1389px;
+    top: 201px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    text-align: center;
+    color: #FFFFFF;
+    z-index: 1;
+}
+
+.price {
+    position: absolute;
+    width: 69px;
+    height: 34px;
+    left: 1570px;
+    top: 202px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #919191;
+}
+
+
+
+
 .commodity_table {
     border-collapse: collapse;
     width: 1504px;
     height: 1008px;
 }
 
-.commodities_box {
+.home_commodities_box {
     position: absolute;
     left: 199px;
     top: 328px;
