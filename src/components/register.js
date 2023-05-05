@@ -121,7 +121,7 @@ export default function Register() {
                     <input type="checkbox" name="Terms" required /> &nbsp; I accept the terms and conditions
                 </div>
 
-                <div className="box last_submit">
+                <div className="box last_submit" >
                     <input type="Submit" name="Submit" className="submit" value="SUBMIT" />
                 </div>
 

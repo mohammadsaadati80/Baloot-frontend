@@ -1,5 +1,5 @@
 import '../css/product.css'
-import {getComments, getCommodities, getProviders, getSuggestions, getUsers} from "./utilities";
+import {addToCart, getComments, getCommodities, getProviders, getSuggestions, getUsers} from "./utilities";
 import {useNavigate, useParams} from "react-router-dom";
 import baloot_img from '../images/baloot.png'
 import star_img from '../images/star.png'
@@ -108,7 +108,7 @@ export default function Product(props) {
                     <div className="box1">
                         <img src={star_img} className="size1"/>
                         <span className="rating1">{product?.rating}</span>
-                        <span className="rating_num">{ product?.rates.length != undefined ? '('+product?.rates.length+')' : '(0)'  }</span>
+                        <span className="rating_num">{ product?.rates?.length != undefined ? '('+product?.rates?.length+')' : '(0)'  }</span>
                     </div>
                 </div>
                 <div className="grid_2_3">
@@ -127,9 +127,9 @@ export default function Product(props) {
                         ))}
                     </ul>
                 </div>
-                <div className="box2">
+                <div className="box2" onClick={() => addToCart(product.id)}>
                     <span className="price1">{product?.price + '$'}</span>
-                    {product?.inStock > 0 && <span className="add">add to cart</span>}
+                    {product?.inStock > 0 && <span className="add" >add to cart</span>}
                 </div>
 
                 <div className="grid2">

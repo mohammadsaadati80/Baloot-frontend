@@ -3,7 +3,7 @@ import baloot_img from '../images/baloot.png';
 import search_img from '../images/search.png';
 import switch_off from '../images/switch.png';
 import switch_on from '../images/green_switch.png';
-import {getCommodities} from "./utilities";
+import {addToCart, getCommodities} from "./utilities";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
@@ -44,7 +44,6 @@ import {useEffect} from "react";
     };
 
     if (searched != '') {
-        console.log(searchType + ' ' + searched);
         if (searchType != "category") searchedCommodities = [...commodities].filter(commodity => commodity[searchType] == searched);
         else searchedCommodities = [...commodities].filter(commodity => commodity.categories.includes(searched));
     } else {
@@ -193,7 +192,10 @@ export function MapCommodities(comms , navigate) {
                     {commodity.price + '$'}
                 </div>
                 {/*////////stopPropagation()*/}
-                <div className="add_to_cart" onClick={(event) => event.stopPropagation()}>
+                <div className="add_to_cart" onClick={(event) => {
+                    event.stopPropagation();
+                    addToCart(commodity.id);
+                } }>
                     Add To Cart
                 </div>
             </td>

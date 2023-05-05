@@ -26,6 +26,8 @@ export default function Providers(props) {
         });
     }, []);
 
+
+
     const navigate = useNavigate();
 
     let provider = providers.find(provider => provider?.id == id);
@@ -42,6 +44,8 @@ export default function Providers(props) {
             navigate('/login');
         }
     }, [navigate]);
+
+    console.log(provider);
 
     return (
         <>

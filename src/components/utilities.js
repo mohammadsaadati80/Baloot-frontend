@@ -1,4 +1,4 @@
-import {comments, suggestions} from "./data";
+import { suggestions, comments} from "./data";
 import axios from 'axios';
 
 async function getCommodities() {
@@ -70,21 +70,39 @@ async function getHistory() {
 
 export {getHistory};
 
+// async function getComments(_commodityId) {
+//     const formData = {
+//         commodityId: _commodityId
+//     };
+//     try {
+//         const response = await axios.post('http://localhost:8080/comment', formData);
+//         const comments = response.data;
+//         const arrayOfObjects = Object.keys(comments).map(key => {
+//             return {id: key, ...comments[key]};
+//         });
+//         console.log(arrayOfObjects);
+//         return arrayOfObjects;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 async function getComments(_commodityId) {
+    return parseJSON(comments);
     const formData = {
         commodityId: _commodityId.toString()
     };
     try {
         const response = await axios.post('http://localhost:8080/comment', formData);
-        const comments = response.data;
-        const arrayOfObjects = Object.keys(comments).map(key => {
-            return {id: key, ...comments[key]};
+        const providers = response.data;
+        const arrayOfObjects = Object.keys(providers).map(key => {
+            return {id: key, ...providers[key]};
         });
         //console.log(arrayOfObjects);
         return arrayOfObjects;
     } catch (error) {
         console.log(error);
     }
+
 }
 
 export {getComments};
@@ -171,3 +189,33 @@ async function login(_username, _password) {
     // });
 }
 export {login};
+
+async function addToCart(_ID) {
+    const data = {
+        commodityId: _ID.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/commodity/add_to_buylist', data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {addToCart};
+
+async function addUser(_name, _address, _birthDate, _email, _password) {
+    const data1 = {
+        name: _name.toString(),
+        address : _address.toString(),
+        birthDate : _birthDate.toString(),
+        email : _email.toString(),
+        password : _password.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/register', data1);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {addUser};
