@@ -3,7 +3,7 @@ import baloot_img from '../images/baloot.png';
 import search_img from '../images/search.png';
 import switch_off from '../images/switch.png';
 import switch_on from '../images/green_switch.png';
-import {addToCart, getCommodities} from "./utilities";
+import {addToCart, getBuyList, getCommodities} from "./utilities";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
@@ -71,6 +71,14 @@ import {useEffect} from "react";
         arrays.push(sortedCommodities.slice(i, i + sliceSize));
     }
 
+     const [buyList, setBuyList] = useState([]);
+     useEffect(() => {
+         getBuyList().then((buyList) => {
+             setBuyList(buyList);
+         }).catch((error) => {
+             console.log(error);
+         });
+     }, []);
 
     return (
         <div>
@@ -106,7 +114,7 @@ import {useEffect} from "react";
                         <div className="cart">
                             Cart
                         </div>
-                        <div className="cart_quality"> {props.cartNum}</div>
+                        <div className="cart_quality"> {buyList.length}</div>
                     </>
                 }
             </div>

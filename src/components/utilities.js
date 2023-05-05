@@ -27,7 +27,7 @@ async function getUsers() {
         const arrayOfObjects = Object.keys(users).map(key => {
             return {id: key, ...users[key]};
         });
-        //console.log(arrayOfObjects);
+        console.log(arrayOfObjects);
         return arrayOfObjects;
     } catch (error) {
         console.log(error);
@@ -203,14 +203,15 @@ async function addToCart(_ID) {
 
 export {addToCart};
 
-async function addUser(_name, _address, _birthDate, _email, _password) {
+async function addUser(_username, _address, _birthDate, _email, _password) {
     const data1 = {
-        name: _name.toString(),
+        username: _username.toString(),
         address : _address.toString(),
         birthDate : _birthDate.toString(),
         email : _email.toString(),
         password : _password.toString()
     };
+    console.log(data1);
     try {
         const response = await axios.post('http://localhost:8080/register', data1);
     } catch (error) {

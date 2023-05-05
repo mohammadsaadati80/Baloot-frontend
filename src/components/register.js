@@ -1,6 +1,7 @@
 import '../css/register.css'
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {addUser} from "./utilities";
 export default function Register() {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -14,7 +15,7 @@ export default function Register() {
 
         // Do something with the form data
         console.log({ name, address, birthDate, email, password });
-
+        addUser(name, address, birthDate, email, password);
         // Reset the form
         setName('');
         setAddress('');

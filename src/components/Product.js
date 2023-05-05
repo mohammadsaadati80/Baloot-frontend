@@ -1,5 +1,5 @@
 import '../css/product.css'
-import {addToCart, getComments, getCommodities, getProviders, getSuggestions, getUsers} from "./utilities";
+import {addToCart, getBuyList, getComments, getCommodities, getProviders, getSuggestions, getUsers} from "./utilities";
 import {useNavigate, useParams} from "react-router-dom";
 import baloot_img from '../images/baloot.png'
 import star_img from '../images/star.png'
@@ -57,7 +57,17 @@ export default function Product(props) {
             console.log(error);
         });
     }, []);
-    // const ratings = getRatings();
+
+    const [buyList, setBuyList] = useState([]);
+    useEffect(() => {
+        getBuyList().then((buyList) => {
+            setBuyList(buyList);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+
     const {id} = useParams();
     const navigate = useNavigate();
 
@@ -94,7 +104,7 @@ export default function Product(props) {
                 <div className="cart">
                     Cart
                 </div>
-                <div className="cart_quality"> {props.cartNum}</div>
+                <div className="cart_quality"> {buyList.length}</div>
             </div>
             <div className="padding123"></div>
             <div className="product_grid grid_size">

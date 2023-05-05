@@ -1,7 +1,7 @@
 import baloot_img from "../images/baloot.png";
 import '../css/product.css'
 import {useNavigate, useParams} from "react-router-dom";
-import {getCommodities, getProviders} from "./utilities";
+import {getBuyList, getCommodities, getProviders} from "./utilities";
 import {MapCommodities} from "./Home";
 import {useEffect, useState} from "react";
 
@@ -26,7 +26,14 @@ export default function Providers(props) {
         });
     }, []);
 
-
+    const [buyList, setBuyList] = useState([]);
+    useEffect(() => {
+        getBuyList().then((buyList) => {
+            setBuyList(buyList);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
 
     const navigate = useNavigate();
 
@@ -61,7 +68,7 @@ export default function Providers(props) {
                 <div className="cart">
                     Cart
                 </div>
-                <div className="cart_quality"> {props.cartNum}</div>
+                <div className="cart_quality"> {buyList.length}</div>
             </div>
             <div className="padding123"></div>
             <img className="provider_pic" src={provider?.image}/>
