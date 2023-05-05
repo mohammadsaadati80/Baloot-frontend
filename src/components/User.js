@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {getCommodities, getSuggestions, getUsers} from "./utilities";
+import {getCommodities, getSuggestions, getUsers, getBuyList, getHistory} from "./utilities";
 import '../css/user.css'
 import baloot_img from '../images/baloot.png'
 import person_img from "../images/person.png"
@@ -13,13 +13,35 @@ import {useEffect, useState} from "react";
 
 export default function (props) {
     const {name} = useParams();
-    const users = getUsers()
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        getUsers().then((users) => {
+            setUsers(users);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    const [buyList, setBuyList] = useState([]);
+    useEffect(() => {
+        getBuyList().then((buyList) => {
+            setBuyList(buyList.slice(0,2));
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
     const navigate = useNavigate();
     //
-    let buyList = getSuggestions();
-    buyList = buyList.slice(0, 2);
-    let historyList = getSuggestions();
-    historyList = historyList.slice(0, 5);
+    const [historyList, setHistoryList] = useState([]); 
+    useEffect(() => {
+        getHistory().then((historyList) => {
+            setHistoryList(historyList.slice(0,5));
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
     //
     const [creditValue, setCreditValue] = useState('');
     const [isOpen, setIsOpen] = useState(false);
@@ -41,39 +63,39 @@ export default function (props) {
                     Baloot
                 </div>
                 <div className="user_name">
-                    {user.username}
+                    {user?.username}
                 </div>
                 <div className="cart_box"></div>
                 <div className="cart">
                     Cart
                 </div>
-                <div className="cart_quality"> 0</div>
+                <div className="cart_quality"> {props.cartNum}</div>
             </div>
             <div className="person_box">
             </div>
             <div>
                 <img src={person_img} className="picture1"/>
             </div>
-            <div className="u_name person_font">{user.username}</div>
+            <div className="u_name person_font">{user?.username}</div>
 
             <div>
                 <img src={mail_img} className="picture2"/>
             </div>
-            <div className="mail person_font">{user.email}</div>
+            <div className="mail person_font">{user?.email}</div>
 
             <div>
                 <img src={calender_img} className="picture3"/>
             </div>
-            <div className="date person_font">{user.birthDate}</div>
+            <div className="date person_font">{user?.birthDate.substr(0, 10)}</div>
             <div>
                 <img src={location_img} className="picture4"/>
             </div>
-            <div className="location person_font">{user.address}</div>
+            <div className="location person_font">{user?.address}</div>
             <div>
                 <img src={dollar_img} className="picture5"/>
             </div>
             <div className="credit">
-                {user.credit}
+                {user?.credit}
             </div>
             <div className="credit_box">
             </div>
@@ -139,7 +161,8 @@ export default function (props) {
                     <td className="last_tr">
                         <div className="add_box ">
                             {/*pos1*/}
-                            <div className="add_text" onClick={() => buyList.length>0 && setIsOpen(true)}>Pay now!</div>
+                            {/*buyList.length>0 &&*/}
+                            <div className="add_text" onClick={() =>  setIsOpen(true)}>Pay now!</div>
                             {/*pos2*/}
                         </div>
                     </td >
@@ -196,16 +219,17 @@ export default function (props) {
             <>
                 <div className="modal_body"></div>
                 <div className="your_cart"> Your cart</div>
-                <div className="pay_name"> {'.    ' +buyList[0].name + '  *   1'}</div>
-                <div className="pay_price"> {buyList[0].price + '$'}</div>
-                <div className="pay_name_total"> {'.    ' +buyList[0].name + '  *   1'}</div>
-                <div className="pay_price_total"> {buyList[0].price + '$'}</div>
+                <div className="pay_name"> {'.    ' +buyList[0]?.name + '  *   1'}</div>
+                <div className="pay_price"> {buyList[0]?.price + '$'}</div>
+                <div className="pay_name_total"> {'.    ' +buyList[0]?.name + '  *   1'} </div>
+                <div className="pay_rest">other products ...</div>
+                <div className="pay_price_total"> {buyList[0]?.price + '$'}</div>
                 <textarea className="pay_box"></textarea>
                 <div className="pay_discount_submit">Submit</div>
                 <div className="total">total</div>
-                <div className="total_price"> {buyList[0].price + '$'}</div>
+                <div className="total_price"> {buyList[0]?.price + '$'}</div>
                 <div className="with_discount">with discount</div>
-                <div className="with_discount_price"> {buyList[0].price + '$'}</div>
+                <div className="with_discount_price"> {buyList[0]?.price + '$'}</div>
                 <div className="close" onClick={() => setIsOpen(false)}>close</div>
                 <div className="buy">Buy</div>
             </>

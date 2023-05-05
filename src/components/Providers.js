@@ -6,8 +6,7 @@ import {MapCommodities} from "./Home";
 import {useEffect, useState} from "react";
 
 export default function Providers(props) {
-
-
+    
     const {id} = useParams();
     const [providers, setProviders] = useState([]);
     useEffect(() => {
@@ -26,7 +25,7 @@ export default function Providers(props) {
             console.log(error);
         });
     }, []);
-    
+
     const navigate = useNavigate();
 
     let provider = providers.find(provider => provider?.id == id);
@@ -39,7 +38,7 @@ export default function Providers(props) {
     }
 
     useEffect(() => {
-        if (props.loggedIn=='') {
+        if (props.loggedIn == '') {
             navigate('/login');
         }
     }, [navigate]);
@@ -58,7 +57,7 @@ export default function Providers(props) {
                 <div className="cart">
                     Cart
                 </div>
-                <div className="cart_quality"> 0</div>
+                <div className="cart_quality"> {props.cartNum}</div>
             </div>
             <div className="padding123"></div>
             <img className="provider_pic" src={provider?.image}/>
@@ -69,13 +68,13 @@ export default function Providers(props) {
             <div className="commodities_box2">
                 <table className="commodity_table">
                     <tr>
-                        {arrays.length > 0 && MapCommodities(arrays[0], navigate())}
+                        {arrays.length > 0 && MapCommodities(arrays[0], navigate)}
                     </tr>
                     <tr>
                         <td className="height_diff"></td>
                     </tr>
                     <tr>
-                        {arrays.length > 1 && MapCommodities(arrays[1], navigate())}
+                        {arrays.length > 1 && MapCommodities(arrays[1], navigate)}
                     </tr>
                 </table>
             </div>

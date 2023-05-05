@@ -1,4 +1,4 @@
-import {comments} from "./data";
+import {comments, suggestions} from "./data";
 import axios from 'axios';
 
 async function getCommodities() {
@@ -27,7 +27,7 @@ async function getUsers() {
         const arrayOfObjects = Object.keys(users).map(key => {
             return {id: key, ...users[key]};
         });
-        console.log(arrayOfObjects);
+        //console.log(arrayOfObjects);
         return arrayOfObjects;
     } catch (error) {
         console.log(error);
@@ -44,7 +44,7 @@ async function getProviders() {
         const arrayOfObjects = Object.keys(providers).map(key => {
             return {id: key, ...providers[key]};
         });
-        console.log(arrayOfObjects);
+        //console.log(arrayOfObjects);
         return arrayOfObjects;
     } catch (error) {
         console.log(error);
@@ -53,9 +53,41 @@ async function getProviders() {
 
 export {getProviders};
 
-export function getComments() {
-    return parseJSON(comments);
+async function getHistory() {
+    // return parseJSON(providers);
+    try {
+        const response = await axios.get('http://localhost:8080/purchasedlist');
+        const history = response.data;
+        const arrayOfObjects = Object.keys(history).map(key => {
+            return {id: key, ...history[key]};
+        });
+        //console.log(arrayOfObjects);
+        return arrayOfObjects;
+    } catch (error) {
+        console.log(error);
+    }
 }
+
+export {getHistory};
+
+async function getComments(_commodityId) {
+    const formData = {
+        commodityId: _commodityId.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/comment', formData);
+        const comments = response.data;
+        const arrayOfObjects = Object.keys(comments).map(key => {
+            return {id: key, ...comments[key]};
+        });
+        //console.log(arrayOfObjects);
+        return arrayOfObjects;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {getComments};
 
 async function getSuggestions(_commodityId) {
     // return parseJSON(suggestions);
@@ -68,7 +100,7 @@ async function getSuggestions(_commodityId) {
         const arrayOfObjects = Object.keys(providers).map(key => {
             return {id: key, ...providers[key]};
         });
-        console.log(arrayOfObjects);
+        //console.log(arrayOfObjects);
         return arrayOfObjects;
     } catch (error) {
         console.log(error);
@@ -76,14 +108,30 @@ async function getSuggestions(_commodityId) {
 
 }
 
-// function getSuggestions() {
-//     return parseJSON(suggestions);
-// }
 export {getSuggestions};
 
-// export function getRatings() {
-//     return parseJSON(ratings);
-// }
+async function getBuyList() {
+    // return parseJSON(providers);
+    try {
+        const response = await axios.get('http://localhost:8080/buylist');
+        const buyList = response.data;
+        const arrayOfObjects = Object.keys(buyList).map(key => {
+            return {id: key, ...buyList[key]};
+        });
+        //console.log(arrayOfObjects);
+        return arrayOfObjects;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {getBuyList};
+
+
+
+export function getRatings() {
+    return parseJSON(suggestions);
+}
 
 export const parseJSON = (jsonData) => {
     try {
@@ -109,7 +157,7 @@ async function login(_username, _password) {
     };
     try {
         const response = await axios.post('http://localhost:8080/login', formData);
-        console.log(response);
+        //console.log(response);
     } catch (error) {
         console.log(error);
     }

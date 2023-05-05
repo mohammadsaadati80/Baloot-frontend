@@ -107,7 +107,7 @@ import {useEffect} from "react";
                         <div className="cart">
                             Cart
                         </div>
-                        <div className="cart_quality"> 0</div>
+                        <div className="cart_quality"> {props.cartNum}</div>
                     </>
                 }
             </div>

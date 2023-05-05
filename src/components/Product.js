@@ -11,6 +11,7 @@ import {useEffect, useState} from "react";
 import {MapCommodities} from "./Home";
 
 export default function Product(props) {
+    
     const [commodities, setCommodities] = useState([]);
     useEffect(() => {
         getCommodities().then((commodities) => {
@@ -38,8 +39,16 @@ export default function Product(props) {
         });
     }, []);
 
-
-    const comments = getComments();
+    const [comments, setComments] = useState([]);
+    useEffect(() => {
+        getComments(id).then((comments) => {
+            setComments(comments);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+    
+    
     const [suggestions, setSuggestions] = useState([]);
     useEffect(() => {
         getSuggestions(id).then((suggestions) => {
@@ -65,11 +74,11 @@ export default function Product(props) {
         arrays.push(suggestions.slice(i, i + sliceSize));
     }
 
-    // useEffect(() => {
-    //     if (props.loggedIn=='') {
-    //         navigate('/login');
-    //     }
-    // }, [navigate]);
+    useEffect(() => {
+        if (props.loggedIn=='') {
+            navigate('/login');
+        }
+    }, [navigate]);
 
     return (
         <>
@@ -85,7 +94,7 @@ export default function Product(props) {
                 <div className="cart">
                     Cart
                 </div>
-                <div className="cart_quality"> 0</div>
+                <div className="cart_quality"> {props.cartNum}</div>
             </div>
             <div className="padding123"></div>
             <div className="product_grid grid_size">
@@ -99,7 +108,7 @@ export default function Product(props) {
                     <div className="box1">
                         <img src={star_img} className="size1"/>
                         <span className="rating1">{product?.rating}</span>
-                        <span className="rating_num">(12)</span>
+                        <span className="rating_num">{ product?.rates.length != undefined ? '('+product?.rates.length+')' : '(0)'  }</span>
                     </div>
                 </div>
                 <div className="grid_2_3">
