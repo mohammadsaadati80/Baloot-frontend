@@ -147,9 +147,9 @@ export {getBuyList};
 
 
 
-export function getRatings() {
-    return parseJSON(suggestions);
-}
+// export function getRatings() {
+//     return parseJSON(suggestions);
+// }
 
 export const parseJSON = (jsonData) => {
     try {
@@ -250,13 +250,74 @@ async function addCredit(_creditValue) {
 
 export {addCredit};
 
-async function logout(_creditValue) {
-    const data1 = {
-        creditValue: _creditValue
-    };
+async function logout() {
     try {
         const response = await axios.post('http://localhost:8080/logout');
     } catch (error) {
         console.log(error);
     }
 }
+
+export {logout};
+
+
+async function getPrice() {
+    try {
+        const response = await axios.get('http://localhost:8080/buylist/total_price');
+        const buyList = response.data;
+        const arrayOfObjects = Object.keys(buyList).map(key => {
+            return {id: key, ...buyList[key]};
+        });
+        // console.log(arrayOfObjects);
+        return buyList;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {getPrice};
+
+async function getDiscountPrice() {
+    try {
+        const response = await axios.get('http://localhost:8080/buylist/total_price_with_discount');
+        const buyList = response.data;
+        const arrayOfObjects = Object.keys(buyList).map(key => {
+            return {id: key, ...buyList[key]};
+        });
+        return buyList;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {getDiscountPrice};
+
+async function addDiscount(_discount) {
+    const data1 = {
+        discount: _discount
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/buylist/discount', data1);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {addDiscount};
+
+async function payBuyList() {
+    try {
+        const response = await axios.post('http://localhost:8080/buylist/payment');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {payBuyList};
+
+
+
+
+
+
+

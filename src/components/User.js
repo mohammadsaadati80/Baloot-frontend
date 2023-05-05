@@ -1,5 +1,14 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {getCommodities, getSuggestions, getUsers, getBuyList, getHistory, addCredit} from "./utilities";
+import {
+    getCommodities,
+    getSuggestions,
+    getUsers,
+    getBuyList,
+    getHistory,
+    addCredit,
+    logout,
+    getPrice, getDiscountPrice, addDiscount, payBuyList
+} from "./utilities";
 import '../css/user.css'
 import baloot_img from '../images/baloot.png'
 import person_img from "../images/person.png"
@@ -56,6 +65,31 @@ export default function (props) {
         }
     }, [navigate]);
 
+    const [price, setPrice] = useState(null);
+    useEffect(() => {
+        getPrice().then((prices) => {
+            setPrice(prices);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    const [discount_price, setDiscount_price] = useState(null);
+    useEffect(() => {
+        getDiscountPrice().then((prices) => {
+            setDiscount_price(prices);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    const [text, setText] = useState("");
+
+    const handleChangeT = (event) => {
+        setText(event.target.value);
+    };
+
+
     return (
         <>
             <div className="user_searchbar">
@@ -92,7 +126,10 @@ export default function (props) {
                 <img src={location_img} className="picture4"/>
             </div>
             <div className="location person_font">{user?.address}</div>
-            <div className="log_out"> Log out</div>
+            <div className="log_out" onClick={() => {
+                logout();
+                window.location.reload();
+            } }> Log out</div>
             <div>
                 <img src={dollar_img} className="picture5"/>
             </div>
@@ -230,14 +267,14 @@ export default function (props) {
                 <div className="pay_name_total"> {'.    ' +buyList[0]?.name + '  *   1'} </div>
                 <div className="pay_rest">other products ...</div>
                 <div className="pay_price_total"> {buyList[0]?.price + '$'}</div>
-                <textarea className="pay_box"></textarea>
-                <div className="pay_discount_submit">Submit</div>
+                <textarea className="pay_box" value={text} onChange={handleChangeT}></textarea>
+                <div className="pay_discount_submit" onClick={() => addDiscount(text)}>Submit</div>
                 <div className="total">total</div>
-                <div className="total_price"> {buyList[0]?.price + '$'}</div>
+                <div className="total_price"> {price}</div>
                 <div className="with_discount">with discount</div>
-                <div className="with_discount_price"> {buyList[0]?.price + '$'}</div>
+                <div className="with_discount_price"> {discount_price}</div>
                 <div className="close" onClick={() => setIsOpen(false)}>close</div>
-                <div className="buy">Buy</div>
+                <div className="buy" onClick={() => payBuyList()}>Buy</div>
             </>
             }
 
