@@ -87,12 +87,12 @@ export {getHistory};
 //     }
 // }
 async function getComments(_commodityId) {
-    return parseJSON(comments);
+    // return parseJSON(comments);
     const formData = {
         commodityId: _commodityId.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/comment', formData);
+        const response = await axios.post('http://localhost:8080/comments', formData);
         const providers = response.data;
         const arrayOfObjects = Object.keys(providers).map(key => {
             return {id: key, ...providers[key]};
@@ -106,6 +106,25 @@ async function getComments(_commodityId) {
 }
 
 export {getComments};
+
+async function temp_comment (_commodityId) {
+    const formData1 = {
+        commodityId: _commodityId.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/comments', formData1);
+        const providers = response.data;
+        const arrayOfObjects = Object.keys(providers).map(key => {
+            return {id: key, ...providers[key]};
+        });
+        console.log(arrayOfObjects);
+        return arrayOfObjects;
+    } catch (error) {
+        console.log(error);
+    }
+}
+export {temp_comment};
+
 
 async function getSuggestions(_commodityId) {
     // return parseJSON(suggestions);

@@ -1,6 +1,6 @@
 import '../css/App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {getBuyList} from "./utilities";
+import {getBuyList, getCommodities, temp_comment} from "./utilities";
 import Login from "./Login";
 import Home from '../components/Home';
 import {useEffect, useState} from "react";
@@ -12,6 +12,18 @@ import Register from "./register";
 
 
 function App() {
+    // const [abc, setABC] = useState([]);
+    // useEffect(() => {
+    //     temp_comment(1).then((commodities) => {
+    //         setABC(commodities);
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     });
+    // }, []);
+    // console.log(abc);
+
+
+
     const [loggedIn, setLoggedIn] = useState('');
 
     const handleLogin = (isLoggedIn) => {
