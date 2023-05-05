@@ -371,7 +371,17 @@ async function addComment(_commodityId, _text) {
 }
 export {addComment};
 
-
+async function removeCommodity(_commodityId) {
+    const data = {
+        commodityId: _commodityId.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/buylist/remove_from_buylist', data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export {removeCommodity};
 
 
 

@@ -7,7 +7,7 @@ import {
     getHistory,
     addCredit,
     logout,
-    getPrice, getDiscountPrice, addDiscount, payBuyList
+    getPrice, getDiscountPrice, addDiscount, payBuyList, removeCommodity
 } from "./utilities";
 import '../css/user.css'
 import baloot_img from '../images/baloot.png'
@@ -36,7 +36,7 @@ export default function (props) {
     useEffect(() => {
         getBuyList().then((buyList) => {
             setAmount(buyList.length);
-            setBuyList(buyList.slice(0,2));
+            setBuyList(buyList.slice(0, 2));
         }).catch((error) => {
             console.log(error);
         });
@@ -44,10 +44,10 @@ export default function (props) {
 
     const navigate = useNavigate();
     //
-    const [historyList, setHistoryList] = useState([]); 
+    const [historyList, setHistoryList] = useState([]);
     useEffect(() => {
         getHistory().then((historyList) => {
-            setHistoryList(historyList.slice(0,5));
+            setHistoryList(historyList.slice(0, 5));
         }).catch((error) => {
             console.log(error);
         });
@@ -60,7 +60,7 @@ export default function (props) {
     let user = users.find(user => user.username == name);
 
     useEffect(() => {
-        if (props.loggedIn=='') {
+        if (props.loggedIn == '') {
             navigate('/login');
         }
     }, [navigate]);
@@ -129,7 +129,8 @@ export default function (props) {
             <div className="log_out" onClick={() => {
                 logout();
                 window.location.reload();
-            } }> Log out</div>
+            }}> Log out
+            </div>
             <div>
                 <img src={dollar_img} className="picture5"/>
             </div>
@@ -149,15 +150,16 @@ export default function (props) {
             </div>
             <div className="cart_text">Cart</div>
             {confirmModal &&
-            <>
-                <div className="modal_body"></div>
-                <div className="confirm_button" onClick={() =>{
-                    addCredit(creditValue);
-                    setCreditValue('0');
-                    setConfirmModal(false);
-                } }>Confirm</div>
-                <div className="close" onClick={() => setConfirmModal(false)}>close</div>
-            </>
+                <>
+                    <div className="modal_body"></div>
+                    <div className="confirm_button" onClick={() => {
+                        addCredit(creditValue);
+                        setCreditValue('0');
+                        setConfirmModal(false);
+                    }}>Confirm
+                    </div>
+                    <div className="close" onClick={() => setConfirmModal(false)}>close</div>
+                </>
             }
 
 
@@ -172,6 +174,7 @@ export default function (props) {
                     <th>Rating</th>
                     <th>In Stock</th>
                     <th>In Cart</th>
+                    <th style={{paddingLeft: '30px'}}>Remove</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -195,6 +198,14 @@ export default function (props) {
                                     <span className="padding1"> + </span>
                                 </div>
                             </td>
+                            <td style={{paddingLeft: '30px'}}>
+                                <div className="remove" style={{marginLeft: '60px'}} onClick={() => {
+                                    console.log(commodity.id);
+                                    removeCommodity(commodity.id);
+                                }}>
+                                    Remove
+                                </div>
+                            </td>
                         </tr>
                     </>
 
@@ -205,10 +216,10 @@ export default function (props) {
                         <div className="add_box ">
                             {/*pos1*/}
                             {/*buyList.length>0 &&*/}
-                            <div className="add_text" onClick={() =>  setIsOpen(true)}>Pay now!</div>
+                            <div className="add_text" onClick={() => setIsOpen(true)}>Pay now!</div>
                             {/*pos2*/}
                         </div>
-                    </td >
+                    </td>
                 </tr>
 
                 </tbody>
@@ -259,23 +270,23 @@ export default function (props) {
             </table>
 
             {isOpen &&
-            <>
-                <div className="modal_body"></div>
-                <div className="your_cart"> Your cart</div>
-                <div className="pay_name"> {'.    ' +buyList[0]?.name + '  *   1'}</div>
-                <div className="pay_price"> {buyList[0]?.price + '$'}</div>
-                <div className="pay_name_total"> {'.    ' +buyList[0]?.name + '  *   1'} </div>
-                <div className="pay_rest">other products ...</div>
-                <div className="pay_price_total"> {buyList[0]?.price + '$'}</div>
-                <textarea className="pay_box" value={text} onChange={handleChangeT}></textarea>
-                <div className="pay_discount_submit" onClick={() => addDiscount(text)}>Submit</div>
-                <div className="total">total</div>
-                <div className="total_price"> {price}</div>
-                <div className="with_discount">with discount</div>
-                <div className="with_discount_price"> {discount_price}</div>
-                <div className="close" onClick={() => setIsOpen(false)}>close</div>
-                <div className="buy" onClick={() => payBuyList()}>Buy</div>
-            </>
+                <>
+                    <div className="modal_body"></div>
+                    <div className="your_cart"> Your cart</div>
+                    <div className="pay_name"> {'.    ' + buyList[0]?.name + '  *   1'}</div>
+                    <div className="pay_price"> {buyList[0]?.price + '$'}</div>
+                    <div className="pay_name_total"> {'.    ' + buyList[0]?.name + '  *   1'} </div>
+                    <div className="pay_rest">other products ...</div>
+                    <div className="pay_price_total"> {buyList[0]?.price + '$'}</div>
+                    <textarea className="pay_box" value={text} onChange={handleChangeT}></textarea>
+                    <div className="pay_discount_submit" onClick={() => addDiscount(text)}>Submit</div>
+                    <div className="total">total</div>
+                    <div className="total_price"> {price}</div>
+                    <div className="with_discount">with discount</div>
+                    <div className="with_discount_price"> {discount_price}</div>
+                    <div className="close" onClick={() => setIsOpen(false)}>close</div>
+                    <div className="buy" onClick={() => payBuyList()}>Buy</div>
+                </>
             }
 
 
