@@ -1128,7 +1128,31 @@ textarea {
     display: flex;
 }
 
+.log_out {
+    position: absolute;
+    width: 160px;
+    height: 68px;
+    left: 173px;
+    top: 459px;
 
+    background: #593C1C;
+    mix-blend-mode: normal;
+    border-radius: 15px;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    display: flex;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    /* identical to box height */
+
+}
 
 
 

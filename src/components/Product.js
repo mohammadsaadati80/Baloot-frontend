@@ -1,9 +1,19 @@
 import '../css/product.css'
-import {addToCart, getBuyList, getComments, getCommodities, getProviders, getSuggestions, getUsers} from "./utilities";
+import {
+    addToCart,
+    getBuyList,
+    getComments,
+    getCommodities,
+    getProviders,
+    getSuggestions,
+    getUsers,
+    rateComm
+} from "./utilities";
 import {useNavigate, useParams} from "react-router-dom";
 import baloot_img from '../images/baloot.png'
 import star_img from '../images/star.png'
 import stars_img from '../images/stars.png'
+import blacStar_img from '../images/blackstar.jpg'
 import dot_img from '../images/dot.png'
 import like_img from '../images/like.png'
 import dislike_img from '../images/dislike.png'
@@ -90,6 +100,22 @@ export default function Product(props) {
         }
     }, [navigate]);
 
+    const [selected, setSelected] = useState(10);
+
+    const handleRate = (index) => {
+        setSelected(index);
+    };
+
+    const spans = [];
+    for (let i = 0; i < 10; i++) {
+        const image = i <= selected ? star_img : blacStar_img;
+        spans.push(
+            <span key={i} onClick={() => handleRate(i)} style={{ width: "4%", height: "4%" }}>
+        <img src={image} alt={`Image ${i}`} style={{ width: "10%", height: "30%" }}/>
+      </span>
+        );
+    }
+
     return (
         <>
             <div className="product_searchbar">
@@ -118,7 +144,7 @@ export default function Product(props) {
                     <div className="box1">
                         <img src={star_img} className="size1"/>
                         <span className="rating1">{product?.rating}</span>
-                        <span className="rating_num">{ product?.rates?.length != undefined ? '('+product?.rates?.length+')' : '(0)'  }</span>
+                        <span className="rating_num">{ product?.rates?.length != undefined ? '('+product?.rates?.length+')' : ''  }</span>
                     </div>
                 </div>
                 <div className="grid_2_3">
@@ -147,10 +173,14 @@ export default function Product(props) {
                         rate now
                     </div>
                     <div className="grid_1_1">
-                        <img src={stars_img} className="star"/>
-                        <img src={stars_img} className="star"/>
+                        {/*<img src={stars_img} className="star"/>*/}
+                        <span className="star">{spans}</span>
+                        {/*<img src={stars_img} className="star"/>*/}
                     </div>
-                    <div className="submit_box">
+                    <div className="submit_box" onClick={() => {
+                        rateComm(product.id, props.loggedIn, selected + 1);
+                        setSelected(0);
+                    } }>
                         <span className="submit_text">submit</span>
                     </div>
                 </div>

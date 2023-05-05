@@ -220,3 +220,43 @@ async function addUser(_username, _address, _birthDate, _email, _password) {
 }
 
 export {addUser};
+
+async function rateComm(_commodityId, _username, _score) {
+    const data1 = {
+        commodityId: _commodityId.toString(),
+        username: _username.toString(),
+        score: _score.toString()
+    };
+    console.log(data1);
+    try {
+        const response = await axios.post('http://localhost:8080/commodity/rate', data1);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {rateComm};
+
+async function addCredit(_creditValue) {
+    const data1 = {
+        creditValue: _creditValue
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/addcredit/', data1);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {addCredit};
+
+async function logout(_creditValue) {
+    const data1 = {
+        creditValue: _creditValue
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/logout');
+    } catch (error) {
+        console.log(error);
+    }
+}

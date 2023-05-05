@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {getCommodities, getSuggestions, getUsers, getBuyList, getHistory} from "./utilities";
+import {getCommodities, getSuggestions, getUsers, getBuyList, getHistory, addCredit} from "./utilities";
 import '../css/user.css'
 import baloot_img from '../images/baloot.png'
 import person_img from "../images/person.png"
@@ -22,10 +22,11 @@ export default function (props) {
             console.log(error);
         });
     }, []);
-
+    const [amount, setAmount] = useState(0);
     const [buyList, setBuyList] = useState([]);
     useEffect(() => {
         getBuyList().then((buyList) => {
+            setAmount(buyList.length);
             setBuyList(buyList.slice(0,2));
         }).catch((error) => {
             console.log(error);
@@ -69,7 +70,7 @@ export default function (props) {
                 <div className="cart">
                     Cart
                 </div>
-                <div className="cart_quality"> {props.cartNum}</div>
+                <div className="cart_quality"> {amount}</div>
             </div>
             <div className="person_box">
             </div>
@@ -91,6 +92,7 @@ export default function (props) {
                 <img src={location_img} className="picture4"/>
             </div>
             <div className="location person_font">{user?.address}</div>
+            <div className="log_out"> Log out</div>
             <div>
                 <img src={dollar_img} className="picture5"/>
             </div>
@@ -112,7 +114,11 @@ export default function (props) {
             {confirmModal &&
             <>
                 <div className="modal_body"></div>
-                <div className="confirm_button">Confirm</div>
+                <div className="confirm_button" onClick={() =>{
+                    addCredit(creditValue);
+                    setCreditValue('0');
+                    setConfirmModal(false);
+                } }>Confirm</div>
                 <div className="close" onClick={() => setConfirmModal(false)}>close</div>
             </>
             }
