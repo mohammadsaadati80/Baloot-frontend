@@ -334,7 +334,42 @@ async function payBuyList() {
 
 export {payBuyList};
 
+async function addLike(_commentId) {
+    const data = {
+        commentId: _commentId.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/comment/like', data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export {addLike};
 
+async function addDislike(_commentId) {
+    const data = {
+        commentId: _commentId.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/comment/dislike', data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export {addDislike};
+
+async function addComment(_commodityId, _text) {
+    const data = {
+        commodityId: _commodityId.toString(),
+        text: _text.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/commodity/add_comment', data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export {addComment};
 
 
 

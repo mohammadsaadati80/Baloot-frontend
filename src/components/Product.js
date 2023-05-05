@@ -1,5 +1,8 @@
 import '../css/product.css'
 import {
+    addComment,
+    addDislike,
+    addLike,
     addToCart,
     getBuyList,
     getComments,
@@ -204,9 +207,9 @@ export default function Product(props) {
                         <div className="grid2to3">
                             <span className="helpful">Is this comment helpful?</span>
                             <span className="padding10">{productComments[0].like}</span>
-                            <span> <img src={like_img} className="pic_size1"/></span>
+                            <span onClick={() => addLike(productComments[0].id)}> <img src={like_img} className="pic_size1"/></span>
                             <span className="padding10">{productComments[0].dislike}</span>
-                            <span><img src={dislike_img} className="pic_size1"/></span>
+                            <span onClick={() => addDislike(productComments[0].id)}><img src={dislike_img} className="pic_size1"/></span>
                         </div>
                     </div>
                 }
@@ -223,9 +226,9 @@ export default function Product(props) {
                         <div className="grid2to3">
                             <span className="helpful">Is this comment helpful?</span>
                             <span className="padding10">{productComments[1].like}</span>
-                            <span> <img src={like_img} className="pic_size1"/></span>
+                            <span onClick={() => addLike(productComments[1].id)}> <img src={like_img} className="pic_size1"/></span>
                             <span className="padding10">{productComments[1].dislike}</span>
-                            <span><img src={dislike_img} className="pic_size1"/></span>
+                            <span onClick={() => addDislike(productComments[1].id)}><img src={dislike_img} className="pic_size1"/></span>
                         </div>
                     </div>
                 }
@@ -234,7 +237,10 @@ export default function Product(props) {
                     <div className="opinion"> Submit your opinion</div>
                     <textarea className="opinion_box date1" value={opinionValue}
                               onChange={(event) => setOpinionValue(event.target.value)}></textarea>
-                    <span className="opinion_submit">
+                    <span className="opinion_submit" onClick={() => {
+                        addComment(product.id, opinionValue);
+                        setOpinionValue('');
+                    } }>
                         submit
                     </span>
                 </div>
