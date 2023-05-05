@@ -1,21 +1,32 @@
 import { useEffect, useState } from "react";
 import styles from '../css/login.module.css';
-import {getUsers} from "./utilities";
+import {getUsers, login} from "./utilities";
 import {useNavigate} from "react-router-dom";
 
 export default function Login(props) {
-    const users = getUsers();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        getUsers().then((users) => {
+            setUsers(users);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
     const handleLogin = (event) => {
         event.preventDefault();
+        ;
 
         const user = users.find((user) => user.username === username && user.password === password);
 
         if (user) {
+            login(username, password)
             props.onLogin(user.username);
             navigate('/');
         } else {
@@ -42,7 +53,7 @@ export default function Login(props) {
                 <form onSubmit={handleLogin}>
                     <input type="text" id="username" placeholder="Username" className={styles['login-input']} value={username} onChange={(event) => setUsername(event.target.value)} />
                     <input type="password" id="password" placeholder="Password" className={styles['login-input']} value={password} onChange={(event) => setPassword(event.target.value)} />
-                    <button type="submit" className={styles['login-button']}>Login</button>
+                    <button type="submit" className={styles['login-button']} >Login</button>
                 </form>
             </div>
         </div>

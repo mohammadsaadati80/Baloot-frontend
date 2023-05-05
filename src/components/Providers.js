@@ -3,22 +3,38 @@ import '../css/product.css'
 import {useNavigate, useParams} from "react-router-dom";
 import {getCommodities, getProviders} from "./utilities";
 import {MapCommodities} from "./Home";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export default function Providers(props) {
 
 
     const {id} = useParams();
-    const providers = getProviders();
-    const commodities = getCommodities();
+    const [providers, setProviders] = useState([]);
+    useEffect(() => {
+        getProviders().then((providers) => {
+            setProviders(providers);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    const [commodities, setCommodities] = useState([]);
+    useEffect(() => {
+        getCommodities().then((commodities) => {
+            setCommodities(commodities);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+    
     const navigate = useNavigate();
 
-    let provider = providers.find(provider => provider.id == id);
-    let products = [...commodities].filter(commodity => commodity.providerId == id);
+    let provider = providers.find(provider => provider?.id == id);
+    let products = [...commodities].filter(commodity => commodity?.providerId == id);
 
     const arrays = [];
-    for (let i = 0; i < products.length; i += 4) {
-        const sliceSize = i + 4 <= products.length ? 4 : products.length - i;
+    for (let i = 0; i < products?.length; i += 4) {
+        const sliceSize = i + 4 <= products?.length ? 4 : products?.length - i;
         arrays.push(products.slice(i, i + sliceSize));
     }
 
@@ -45,9 +61,9 @@ export default function Providers(props) {
                 <div className="cart_quality"> 0</div>
             </div>
             <div className="padding123"></div>
-            <img className="provider_pic" src={provider.image}/>
-            <div className="since">{'since ' + provider.registryDate.split('-')[0]}</div>
-            <div className="provider_title">{provider.name}</div>
+            <img className="provider_pic" src={provider?.image}/>
+            <div className="since">{'since ' + provider?.registryDate.split('-')[0]}</div>
+            <div className="provider_title">{provider?.name}</div>
             <div className="all_provided"> All provided commodities</div>
 
             <div className="commodities_box2">

@@ -11,32 +11,65 @@ import {useEffect, useState} from "react";
 import {MapCommodities} from "./Home";
 
 export default function Product(props) {
-    const commodities = getCommodities();
-    const users = getUsers();
-    const providers = getProviders();
+    const [commodities, setCommodities] = useState([]);
+    useEffect(() => {
+        getCommodities().then((commodities) => {
+            setCommodities(commodities);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        getUsers().then((users) => {
+            setUsers(users);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    const [providers, setProviders] = useState([]);
+    useEffect(() => {
+        getProviders().then((providers) => {
+            setProviders(providers);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+
     const comments = getComments();
-    const suggestions = getSuggestions();
+    const [suggestions, setSuggestions] = useState([]);
+    useEffect(() => {
+        getSuggestions(id).then((suggestions) => {
+            setSuggestions(suggestions);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
     // const ratings = getRatings();
     const {id} = useParams();
     const navigate = useNavigate();
 
-    let product = commodities.find(commodity => commodity.id == id);
-    let provider = providers.find(provider => provider.id == product.providerId);
+    let product = commodities.find(commodity => commodity?.id == id);
+    let provider = providers.find(provider => provider.id == product?.providerId);
     let productComments = [...comments].filter(comment => comment.commodityId == id);
+
 
     const [opinionValue, setOpinionValue] = useState('');
 
     const arrays = [];
-    for (let i = 0; i < suggestions.length; i += 4) {
-        const sliceSize = i + 4 <= suggestions.length ? 4 : suggestions.length - i;
+    for (let i = 0; i < suggestions?.length; i += 4) {
+        const sliceSize = i + 4 <= suggestions.length ? 4 : suggestions?.length - i;
         arrays.push(suggestions.slice(i, i + sliceSize));
     }
 
-    useEffect(() => {
-        if (props.loggedIn=='') {
-            navigate('/login');
-        }
-    }, [navigate]);
+    // useEffect(() => {
+    //     if (props.loggedIn=='') {
+    //         navigate('/login');
+    //     }
+    // }, [navigate]);
 
     return (
         <>
@@ -57,28 +90,28 @@ export default function Product(props) {
             <div className="padding123"></div>
             <div className="product_grid grid_size">
                 <div className="grid_1_9">
-                    <img src={product.image}
+                    <img src={product?.image}
                          className="image1"/>
                 </div>
                 <div className="grid_1_2">
-                    <span className="p_title"> {product.name}</span>
-                    <span className="instock"> {product.inStock + ' left'}</span>
+                    <span className="p_title"> {product?.name}</span>
+                    <span className="instock"> {product?.inStock + ' left'}</span>
                     <div className="box1">
                         <img src={star_img} className="size1"/>
-                        <span className="rating1">{product.rating}</span>
+                        <span className="rating1">{product?.rating}</span>
                         <span className="rating_num">(12)</span>
                     </div>
                 </div>
                 <div className="grid_2_3">
                     <span className="provider_by">by</span>
-                    <span className="provider" onClick={() => navigate('/provider/' + provider.id)}> {provider.name}</span>
+                    <span className="provider" onClick={() => navigate('/provider/' + provider?.id)}> {provider?.name}</span>
                     <br/> <br/>
                     <span className="categories">Category(s)</span>
                 </div>
 
                 <div>
                     <ul>
-                        {product.categories.map((category, index) => (
+                        {product?.categories.map((category, index) => (
                             <li key={index} className="category">
                                 {category}
                             </li>
@@ -86,8 +119,8 @@ export default function Product(props) {
                     </ul>
                 </div>
                 <div className="box2">
-                    <span className="price1">{product.price + '$'}</span>
-                    {product.inStock > 0 && <span className="add">add to cart</span>}
+                    <span className="price1">{product?.price + '$'}</span>
+                    {product?.inStock > 0 && <span className="add">add to cart</span>}
                 </div>
 
                 <div className="grid2">
@@ -159,7 +192,7 @@ export default function Product(props) {
             </div>
 
 
-            {suggestions.length > 0 &&
+            {suggestions?.length > 0 &&
                 <>
                     <div className="might_like">
                         You also might like...

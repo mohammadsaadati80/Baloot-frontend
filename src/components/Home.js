@@ -6,9 +6,18 @@ import switch_on from '../images/green_switch.png';
 import {getCommodities} from "./utilities";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
-export default function Home(props) {
-    const commodities = getCommodities();
+ export default function Home(props) {
+    const [commodities, setCommodities] = useState([]);
+
+    useEffect(() => {
+        getCommodities().then((commodities) => {
+            setCommodities(commodities);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
 
     const navigate = useNavigate();
 
@@ -166,7 +175,7 @@ export default function Home(props) {
     );
 
 }
-// mapCommodities
+// // mapCommodities
 export function MapCommodities(comms , navigate) {
     // const navigate = useNavigate();
     // onClick={() => navigate('/product/' + commodity.id)}
@@ -193,6 +202,5 @@ export function MapCommodities(comms , navigate) {
     ));
     return commodityElements;
 }
-
 
 
