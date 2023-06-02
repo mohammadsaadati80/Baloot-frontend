@@ -3,7 +3,7 @@ import baloot_img from '../images/baloot.png';
 import search_img from '../images/search.png';
 import switch_off from '../images/switch.png';
 import switch_on from '../images/green_switch.png';
-import {addToCart, getBuyList, getCommodities} from "./utilities";
+import {addToCart, getBuyList, getCommodities, getCurrentUser} from "./utilities";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
@@ -19,12 +19,23 @@ import {useEffect} from "react";
         });
     }, []);
 
+     const [user, setUser] = useState("");
+
+     useEffect(() => {
+         getCurrentUser().then((user1) => {
+             setUser(user1);
+             console.log(user1);
+         }).catch((error) => {
+             console.log(error);
+         });
+     }, []);
+
     const navigate = useNavigate();
 
     let searchedCommodities = [];
     let filteredCommodities = [];
     let sortedCommodities = [];
-    let loggedInUser = props.loggedIn;
+    let loggedInUser = localStorage.getItem("username");
     let isLoggedIn = loggedInUser != '' ? true : false;
 
     const [isFiltered, setIsFiltered] = useState(false);
@@ -80,6 +91,9 @@ import {useEffect} from "react";
          });
      }, []);
 
+     // console.log("token is");
+     // console.log(localStorage.getItem("token"));
+
     return (
         <div>
             <div className="searchbar">
@@ -107,10 +121,10 @@ import {useEffect} from "react";
                         <div className="login_text" onClick={() => navigate('/login')}> login</div>
                     </> :
                     <>
-                        <div className="user_name" onClick={() => navigate('/user/' + props.loggedIn)}>
-                            {props.loggedIn}
+                        <div className="user_name" onClick={() => navigate('/user/' +loggedInUser)}>
+                            {loggedInUser}
                         </div>
-                        <div className="cart_box" onClick={() => navigate('/user/' + props.loggedIn)}></div>
+                        <div className="cart_box" onClick={() => navigate('/user/' + loggedInUser)}></div>
                         <div className="cart">
                             Cart
                         </div>

@@ -1,7 +1,7 @@
 import '../css/register.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {addUser} from "./utilities";
+import {addUser, getCommodities, getProviders} from "./utilities";
 export default function Register() {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -9,6 +9,16 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    const [providers, setProviders] = useState([]);
+    useEffect(() => {
+        getProviders().then((providers) => {
+            setProviders(providers);
+            console.log(providers);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, []);
 
     function handleSubmit(event) {
         event.preventDefault();

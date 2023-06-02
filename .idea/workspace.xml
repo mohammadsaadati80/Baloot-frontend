@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f66dd3f6-ae34-417c-8701-5cf4b41c2b27" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/utilities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utilities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/user.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,20 +27,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/mohammad/Desktop/IE/Baloot-frontend/src/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mohammad/Desktop/ie_ca8&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mohammad\Desktop\IE\Baloot-frontend\src\images" />
@@ -53,7 +54,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683281283125</updated>
-      <workItem from="1683281286311" duration="24196000" />
+      <workItem from="1683281286311" duration="24314000" />
+      <workItem from="1684948610434" duration="100000" />
+      <workItem from="1684948718718" duration="1615000" />
+      <workItem from="1684955132818" duration="2021000" />
+      <workItem from="1685120568757" duration="1312000" />
+      <workItem from="1685470301369" duration="78000" />
+      <workItem from="1685470519639" duration="1583000" />
+      <workItem from="1685534585854" duration="1613000" />
+      <workItem from="1685693116786" duration="10607000" />
     </task>
     <servers />
   </component>

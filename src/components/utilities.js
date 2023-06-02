@@ -194,18 +194,18 @@ async function login(_username, _password) {
     };
     try {
         const response = await axios.post('http://localhost:8080/login', formData);
-        //console.log(response);
+        console.log(1234);
+        console.log(response.headers);
+        const data = {
+            token: response.headers.token,
+            username: response.headers.username
+        }
+        console.log(data);
+        return data;
     } catch (error) {
         console.log(error);
+        return null;
     }
-    // axios.post('http://localhost:8080/users', {
-    //     username: _username,
-    //     password: _password
-    // }).then((response) => {
-    //     console.log(response);
-    // }).catch((error) => {
-    //     console.log(error);
-    // });
 }
 export {login};
 
@@ -232,7 +232,7 @@ async function addUser(_username, _address, _birthDate, _email, _password) {
     };
     console.log(data1);
     try {
-        const response = await axios.post('http://localhost:8080/register', data1);
+        const response = await axios.post('http://localhost:8080/signup', data1); //signup
     } catch (error) {
         console.log(error);
     }
@@ -382,6 +382,18 @@ async function removeCommodity(_commodityId) {
     }
 }
 export {removeCommodity};
+
+async function getCurrentUser() {
+    try {
+        const response = await axios.get('http://localhost:8080/get_userss');
+        console.log("current is");
+        console.log(response.data);
+        return(response.data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export {getCurrentUser};
 
 
 
