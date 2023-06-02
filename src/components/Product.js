@@ -98,7 +98,7 @@ export default function Product(props) {
     }
 
     useEffect(() => {
-        if (props.loggedIn=='') {
+        if (localStorage.getItem("username") == null) {
             navigate('/login');
         }
     }, [navigate]);
@@ -126,10 +126,10 @@ export default function Product(props) {
                 <div className="product_baloot_text">
                     Baloot
                 </div>
-                <div className="user_name" onClick={() => navigate('/user/' + props.loggedIn)}>
-                    {props.loggedIn}
+                <div className="user_name" onClick={() => navigate('/user/' + localStorage.getItem("username"))}>
+                    {localStorage.getItem("username")}
                 </div>
-                <div className="cart_box" onClick={() => navigate('/user/' + props.loggedIn)}></div>
+                <div className="cart_box" onClick={() => navigate('/user/' + localStorage.getItem("username"))}></div>
                 <div className="cart">
                     Cart
                 </div>
@@ -181,7 +181,7 @@ export default function Product(props) {
                         {/*<img src={stars_img} className="star"/>*/}
                     </div>
                     <div className="submit_box" onClick={() => {
-                        rateComm(product.id, props.loggedIn, selected + 1);
+                        rateComm(product.id, localStorage.getItem("username"), selected + 1);
                         setSelected(0);
                     } }>
                         <span className="submit_text">submit</span>
@@ -201,7 +201,7 @@ export default function Product(props) {
                         </div>
                         <div className="comment_box_1">
                             <span className="date1">{productComments[0].date}</span>
-                            <span className="padding40"> <img src={dot_img}/> {'   ' + props.loggedIn} </span>
+                            <span className="padding40"> <img src={dot_img}/> {'   ' + localStorage.getItem("username")} </span>
                             {/*<span className="name">#username</span>*/}
                         </div>
                         <div className="grid2to3">
@@ -220,7 +220,7 @@ export default function Product(props) {
                         </div>
                         <div className="comment_box_1">
                             <span className="date1">{productComments[1].date}</span>
-                            <span className="padding40"> <img src={dot_img}/> {'   ' + props.loggedIn} </span>
+                            <span className="padding40"> <img src={dot_img}/> {'   ' + localStorage.getItem("username")} </span>
                             {/*<span className="name">#username</span>*/}
                         </div>
                         <div className="grid2to3">

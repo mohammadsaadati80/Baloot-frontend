@@ -47,7 +47,7 @@ export default function Providers(props) {
     }
 
     useEffect(() => {
-        if (props.loggedIn == '') {
+        if (localStorage.getItem("username") == null) {
             navigate('/login');
         }
     }, [navigate]);
@@ -61,10 +61,10 @@ export default function Providers(props) {
                 <div className="product_baloot_text">
                     Baloot
                 </div>
-                <div className="user_name" onClick={() => navigate('/user/' + props.loggedIn)}>
-                    {props.loggedIn}
+                <div className="user_name" onClick={() => navigate('/user/' + localStorage.getItem("username"))}>
+                    {localStorage.getItem("username")}
                 </div>
-                <div className="cart_box" onClick={() => navigate('/user/' + props.loggedIn)}></div>
+                <div className="cart_box" onClick={() => navigate('/user/' + localStorage.getItem("username"))}></div>
                 <div className="cart">
                     Cart
                 </div>

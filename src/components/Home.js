@@ -35,7 +35,7 @@ import {useEffect} from "react";
     let searchedCommodities = [];
     let filteredCommodities = [];
     let sortedCommodities = [];
-    let loggedInUser = localStorage.getItem("username");
+    let loggedInUser = localStorage.getItem("username"); // pro.sloggedIn
     let isLoggedIn = loggedInUser != '' ? true : false;
 
     const [isFiltered, setIsFiltered] = useState(false);
@@ -121,10 +121,10 @@ import {useEffect} from "react";
                         <div className="login_text" onClick={() => navigate('/login')}> login</div>
                     </> :
                     <>
-                        <div className="user_name" onClick={() => navigate('/user/' +loggedInUser)}>
-                            {loggedInUser}
+                        <div className="user_name" onClick={() => navigate('/user/' + localStorage.getItem("username"))}>
+                            {localStorage.getItem("username")}
                         </div>
-                        <div className="cart_box" onClick={() => navigate('/user/' + loggedInUser)}></div>
+                        <div className="cart_box" onClick={() => navigate('/user/' + localStorage.getItem("username"))}></div>
                         <div className="cart">
                             Cart
                         </div>

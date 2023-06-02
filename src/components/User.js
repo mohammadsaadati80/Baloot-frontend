@@ -60,7 +60,7 @@ export default function (props) {
     let user = users.find(user => user.username == name);
 
     useEffect(() => {
-        if (props.loggedIn == '') {
+        if (localStorage.getItem("username") == null) {
             navigate('/login');
         }
     }, [navigate]);
@@ -127,6 +127,7 @@ export default function (props) {
             </div>
             <div className="location person_font">{user?.address}</div>
             <div className="log_out" onClick={() => {
+                localStorage.clear();
                 logout();
                 window.location.reload();
             }}> Log out
