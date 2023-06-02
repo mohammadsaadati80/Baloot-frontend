@@ -8,21 +8,11 @@ import Product from "./Product";
 import Providers from "./Providers";
 import User from "./User";
 import Register from "./register";
+import Callback from "./Callback";
 
 
 
 function App() {
-    // const [abc, setABC] = useState([]);
-    // useEffect(() => {
-    //     temp_comment(1).then((commodities) => {
-    //         setABC(commodities);
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });
-    // }, []);
-    // console.log(abc);
-
-
 
     const [loggedIn, setLoggedIn] = useState('');
 
@@ -38,6 +28,7 @@ function App() {
                 <Route path="/provider/:id" element={<Providers loggedIn={loggedIn} />}/>
                 <Route path="/login" element={<Login onLogin={handleLogin}/>} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/oauth/redirect" element={<Callback />} />
             </Routes>
         </Router>
     );

@@ -54,6 +54,8 @@ export default function Login(props) {
                     <input type="password" id="password" placeholder="Password" className={styles['login-input']}
                            value={password} onChange={(event) => setPassword(event.target.value)}/>
                     <button type="submit" className={styles['login-button']}>Login</button>
+                    <br/><br/>
+                    <a className={styles['login-button']} href="https://github.com/login/oauth/authorize?client_id=3e057dd17148426a419e&scope=user">Login via github</a>
                 </form>
             </div>
         </div>

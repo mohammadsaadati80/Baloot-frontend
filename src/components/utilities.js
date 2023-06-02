@@ -500,5 +500,16 @@ async function getCurrentUser() {
 }
 export {getCurrentUser};
 
-
+async function callbackAPI(_code) {
+    const data = {
+        code: _code.toString()
+    };
+    try {
+        const response = await axios.post('http://localhost:8080/callback/?code=' + _code);
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export {callbackAPI};
 

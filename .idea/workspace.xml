@@ -6,13 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="f66dd3f6-ae34-417c-8701-5cf4b41c2b27" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/utilities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utilities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/login.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,7 +69,8 @@
       <workItem from="1685470301369" duration="78000" />
       <workItem from="1685470519639" duration="1583000" />
       <workItem from="1685534585854" duration="1613000" />
-      <workItem from="1685693116786" duration="14932000" />
+      <workItem from="1685693116786" duration="16238000" />
+      <workItem from="1685728940537" duration="4019000" />
     </task>
     <servers />
   </component>
