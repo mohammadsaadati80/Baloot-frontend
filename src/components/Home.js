@@ -19,16 +19,16 @@ import {useEffect} from "react";
         });
     }, []);
 
-     const [user, setUser] = useState("");
-
-     useEffect(() => {
-         getCurrentUser().then((user1) => {
-             setUser(user1);
-             console.log(user1);
-         }).catch((error) => {
-             console.log(error);
-         });
-     }, []);
+     // const [user, setUser] = useState("");
+     //
+     // useEffect(() => {
+     //     getCurrentUser().then((user1) => {
+     //         setUser(user1);
+     //         console.log(user1);
+     //     }).catch((error) => {
+     //         console.log(error);
+     //     });
+     // }, []);
 
     const navigate = useNavigate();
 
@@ -128,7 +128,9 @@ import {useEffect} from "react";
                         <div className="cart">
                             Cart
                         </div>
-                        <div className="cart_quality"> {buyList.length}</div>
+                        <div className="cart_quality">
+                            {buyList.length}
+                        </div>
                     </>
                 }
             </div>

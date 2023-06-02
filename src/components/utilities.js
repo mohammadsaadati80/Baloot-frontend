@@ -5,7 +5,12 @@ async function getCommodities() {
     // console.log(parseJSON(commodities));
     // return parseJSON(commodities);
     try {
-        const response = await axios.get('http://localhost:8080/commodities');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/commodities', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const comms = response.data;
         const arrayOfObjects = Object.keys(comms).map(key => {
             return {id: key, ...comms[key]};
@@ -22,7 +27,12 @@ export {getCommodities};
 async function getUsers() {
     // return parseJSON(users);
     try {
-        const response = await axios.get('http://localhost:8080/users');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/users', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const users = response.data;
         const arrayOfObjects = Object.keys(users).map(key => {
             return {id: key, ...users[key]};
@@ -39,7 +49,12 @@ export {getUsers};
 async function getProviders() {
     // return parseJSON(providers);
     try {
-        const response = await axios.get('http://localhost:8080/providers');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/providers', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const providers = response.data;
         const arrayOfObjects = Object.keys(providers).map(key => {
             return {id: key, ...providers[key]};
@@ -56,7 +71,12 @@ export {getProviders};
 async function getHistory() {
     // return parseJSON(providers);
     try {
-        const response = await axios.get('http://localhost:8080/purchasedlist');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/purchasedlist', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const history = response.data;
         const arrayOfObjects = Object.keys(history).map(key => {
             return {id: key, ...history[key]};
@@ -92,7 +112,12 @@ async function getComments(_commodityId) {
         commodityId: _commodityId.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/comments', formData);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/comments', formData, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const providers = response.data;
         const arrayOfObjects = Object.keys(providers).map(key => {
             return {id: key, ...providers[key]};
@@ -112,7 +137,12 @@ async function temp_comment (_commodityId) {
         commodityId: _commodityId.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/comments', formData1);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/comments', formData1, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const providers = response.data;
         const arrayOfObjects = Object.keys(providers).map(key => {
             return {id: key, ...providers[key]};
@@ -132,7 +162,12 @@ async function getSuggestions(_commodityId) {
         commodityId: _commodityId.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/buylist/suggestion', formData);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/buylist/suggestion', formData, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const providers = response.data;
         const arrayOfObjects = Object.keys(providers).map(key => {
             return {id: key, ...providers[key]};
@@ -150,7 +185,12 @@ export {getSuggestions};
 async function getBuyList() {
     // return parseJSON(providers);
     try {
-        const response = await axios.get('http://localhost:8080/buylist');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/buylist', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const buyList = response.data;
         const arrayOfObjects = Object.keys(buyList).map(key => {
             return {id: key, ...buyList[key]};
@@ -214,7 +254,12 @@ async function addToCart(_ID) {
         commodityId: _ID.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/commodity/add_to_buylist', data);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/commodity/add_to_buylist', data, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -248,7 +293,12 @@ async function rateComm(_commodityId, _username, _score) {
     };
     console.log(data1);
     try {
-        const response = await axios.post('http://localhost:8080/commodity/rate', data1);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/commodity/rate', data1, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -261,7 +311,12 @@ async function addCredit(_creditValue) {
         creditValue: _creditValue
     };
     try {
-        const response = await axios.post('http://localhost:8080/addcredit/', data1);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/addcredit/', data1, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -271,7 +326,12 @@ export {addCredit};
 
 async function logout() {
     try {
-        const response = await axios.post('http://localhost:8080/logout');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/logout', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -282,7 +342,12 @@ export {logout};
 
 async function getPrice() {
     try {
-        const response = await axios.get('http://localhost:8080/buylist/total_price');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/buylist/total_price', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const buyList = response.data;
         const arrayOfObjects = Object.keys(buyList).map(key => {
             return {id: key, ...buyList[key]};
@@ -298,7 +363,12 @@ export {getPrice};
 
 async function getDiscountPrice() {
     try {
-        const response = await axios.get('http://localhost:8080/buylist/total_price_with_discount');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/buylist/total_price_with_discount', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         const buyList = response.data;
         const arrayOfObjects = Object.keys(buyList).map(key => {
             return {id: key, ...buyList[key]};
@@ -316,7 +386,12 @@ async function addDiscount(_discount) {
         discount: _discount
     };
     try {
-        const response = await axios.post('http://localhost:8080/buylist/discount', data1);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/buylist/discount', data1, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -326,7 +401,12 @@ export {addDiscount};
 
 async function payBuyList() {
     try {
-        const response = await axios.post('http://localhost:8080/buylist/payment');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/buylist/payment', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -339,7 +419,12 @@ async function addLike(_commentId) {
         commentId: _commentId.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/comment/like', data);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/comment/like', data, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -351,7 +436,12 @@ async function addDislike(_commentId) {
         commentId: _commentId.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/comment/dislike', data);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/comment/dislike', data, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -364,7 +454,12 @@ async function addComment(_commodityId, _text) {
         text: _text.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/commodity/add_comment', data);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/commodity/add_comment', data, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -376,7 +471,12 @@ async function removeCommodity(_commodityId) {
         commodityId: _commodityId.toString()
     };
     try {
-        const response = await axios.post('http://localhost:8080/buylist/remove_from_buylist', data);
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.post('http://localhost:8080/buylist/remove_from_buylist', data, {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -385,7 +485,12 @@ export {removeCommodity};
 
 async function getCurrentUser() {
     try {
-        const response = await axios.get('http://localhost:8080/get_userss');
+        const jwtToken = localStorage.getItem("token");
+        const response = await axios.get('http://localhost:8080/get_userss', {
+            headers: {
+                Authorization: jwtToken
+            }
+        });
         console.log("current is");
         console.log(response.data);
         return(response.data);
